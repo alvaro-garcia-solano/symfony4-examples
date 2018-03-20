@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Detalles de la Propiedades{% endblock %}
+
+{% block stylesheets %}{% endblock %}
+
+{% block body %}
+
+
+<div class="container">
+    <br>
+    <a href="{{ path('admin_list_properties') }}" class="btn btn-primary">Volver</a>
+    <h3>DETALLES DE LA PROPIEDAD</h3>
+    <p>Identificador: {{ property.id }}</p>
+    <p>Titulo: {{ property.title }}</p>
+    <p>Descripción: {{ property.description }}</p>
+    <p>Precio: {{ property.prize }}</p>
+    <p>Habitaciones: {{ property.rooms }}</p>
+    <p>Baños: {{ property.bathrooms }}</p>
+    <p>Aseos: {{ property.toilets }}</p>
+    <p>Tamaño (m2): {{ property.size }}</p>
+    <p>Tamaño parcela: {{ property.plotSize }}</p>
+    <p>Provincia: {{ property.province }}</p>
+</div>
+{% endblock %}

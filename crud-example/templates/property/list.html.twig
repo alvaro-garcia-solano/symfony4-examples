@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Listado de Propiedades{% endblock %}
+
+{% block stylesheets %}{% endblock %}
+
+{% block body %}
+
+
+<div class="container">
+    <br>
+    <a href="{{ path('admin_new_property') }}" class="btn btn-primary">Añadir propiedad</a>
+    <h3>LISTADO PROPIEDADES</h3>
+
+    <!-- Listamos mensaje de exito -->
+    {% for msg in app.session.flashBag.get('success') %}
+        <div class="alert alert-success">
+            {{ msg }}
+        </div>
+    {% endfor %}
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Titulo</th>
+                <th>Descripcion</th>
+                <th>Precio</th>
+                <th>Habitaciones</th>
+                <th>Baños</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for property in properties %}
+            <tr>
+                <td> {{ property.id }}</td>
+                <td> {{ property.title }} </td>
+                <td> {{ property.description }} </td>
+                <td> {{ property.prize }} </td>
+                <td> {{ property.rooms }} </td>
+                <td> {{ property.bathrooms }} </td>
+                <td>
+                    <a href="{{ path('admin_show_property', {'id': property.id })  }}" class="btn btn-primary btn-sm">Ver</a>
+                    <a href="{{ path('admin_edit_property', {'id': property.id })  }}" class="btn btn-success btn-sm">Editar</a>
+                    <a href="{{ path('admin_delete_property', {'id': property.id })  }}" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+            {% else %}
+                <tr>
+                    <td>¡No hay datos!</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+<!--{{ form_start(form) }}-->
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+    {{ form_row(form.title, {
+        'label': 'Titulo'
+    }) }}
+    {{ form_row(form.description, {
+        'label': 'Descripcion'
+    }) }}
+    {{ form_row(form.prize, {
+        'label': 'Pecios'
+    }) }}
+    {{ form_row(form.rooms, {
+        'label': 'Habitaciones'
+    }) }}
+    {{ form_row(form.bathrooms, {
+        'label': 'Baños'
+    }) }}
+    {{ form_row(form.toilets, {
+        'label': 'Aseos'
+    }) }}
+    {{ form_row(form.size, {
+        'label': 'Tamaño (m2)'
+    }) }}
+    {{ form_row(form.plotSize, {
+        'label': 'Tamaño Parcela'
+    }) }}
+    {{ form_row(form.province, {
+        'label': 'Provincia'
+    }) }}
+{{ form_end(form) }}

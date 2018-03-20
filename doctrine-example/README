@@ -1,0 +1,56 @@
+Ejemplo Doctrine Symfony 4
+https://symfony.com/doc/current/doctrine.html
+
+#CREAR TABLA + CRUD
+- Instalamos el paquete Doctrine
+composer require doctrine maker
+
+- Configuramos conexion en .env
+DATABASE_URL=mysql://root:@127.0.0.1:3306/doctrine
+
+- Creamos la BD
+php bin/console doctrine:database:create
+
+- Para ver comandos de doctrine disponibles
+php bin/console list doctrine
+
+- Para crear una entidad producto
+php bin/console make:entity Product
+
+NOTA: Si da error:
+composer remove maker
+composer require maker 1.0
+
+- Se rellena el fichero Entity\Product
+
+- Para crear las tablas y esquema:
+php bin/console doctrine:migrations:diff --> genera Migracion
+php bin/console doctrine:migrations:migrate
+
+NOTA: si se modifica la Entidad ejecutar los 2 comandos de nuevo
+
+- Getters and Setters
+If you use an IDE like PhpStorm, it can generate these for you.
+In PhpStorm, put your cursor anywhere in the class,
+then go to the Code -> Generate menu and select "Getters and Setters":
+
+- Persistir Objetos
+composer require annotations
+php bin/console make:controller ProductController
+
+Se accede a la url que ejecuta el Controlador
+
+Para comprobar se ha insertado correctamente:
+php bin/console doctrine:query:sql 'SELECT * FROM product'
+
+
+#FIXTURES (Poblar BD con dummy data)
+composer require --dev doctrine/doctrine-fixtures-bundle
+
+#RELACION ONE TO MANY (CATEGORY HAS MANY PRODUCTS)
+php bin/console make:entity Category
+
+- Se modifican controladores
+
+php bin/console doctrine:migrations:diff
+php bin/console doctrine:migrations:migrate
